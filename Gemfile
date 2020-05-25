@@ -57,3 +57,4 @@ gem "redis", "~> 4.1"
 gem "sidekiq", "~> 6.0"
 gem "cable_ready", "~> 4.1"
 gem "stimulus_reflex", "~> 3.2"
+gem 'devise'
