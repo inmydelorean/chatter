@@ -9,16 +9,20 @@ class PostsController < ApplicationController
 
   def create
     post = Post.create(post_params)
+    if post.save
     cable_ready["feed"].insert_adjacent_html(
         selector: "#feed",
         position: "afterbegin",
         html: render_to_string(partial: "post", locals: {post: post}))
     cable_ready.broadcast
     redirect_to posts_path
+    else
+      redirect_to posts_path(notice: 'Post has not been added.')
+    end
   end
 
   private
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, :user_id)
   end
 end

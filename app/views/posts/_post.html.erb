@@ -3,8 +3,8 @@
     <%= post.body %>
   </div>
   <span class="opacity-50">
-    <strong><%= post.username %></strong>
-    <small><%= time_ago_in_words post.created_at %> ago</small>
+    <strong><%= post.user.email %></strong>
+    <small><%= post.created_at %></small>
   </span>
 
   <%= link_to "#", class: "ml-2 text-sm text-blue-500 underline",
