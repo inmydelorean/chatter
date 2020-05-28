@@ -7,6 +7,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def profile
+    @posts = Post.all.where(:user_id => current_user.id).order(created_at: :desc)
+  end
+
   def create
     post = Post.create(post_params)
     if post.save
