@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   include CableReady::Broadcaster
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :profile]
 
   def index
     @posts = Post.all.order(created_at: :desc)
